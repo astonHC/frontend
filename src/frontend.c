@@ -43,5 +43,21 @@ int FRONTEND_INIT(int argc, char** argv)
     SDL_SetHint(SDL_HINT_WINDOWS_DPI_SCALING, "1");
 }
 
+/* FREE UP/DEINITIALISE MEMORY FROM THE PROGRAM */
+/* AS AND WHEN IT ISN'T BEING USED */
+
+STATIC
+void FRONTEND_FREE(void)
+{
+    struct FRONTEND* FRONTEND_BASE;
+    struct MD_CONFIG* MD;
+
+    if(FRONTEND_BASE->FRONTEND_TEXTURE != NULL)
+        SDL_DestroyTexture(FRONTEND_BASE->FRONTEND_TEXTURE);
+
+    free(MD->STATE.M68K);
+    free(MD->STATE.Z80);
+}
+
 
 #endif
