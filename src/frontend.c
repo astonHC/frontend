@@ -42,7 +42,11 @@ int FRONTEND_INIT(int argc, char** argv)
 
     SDL_SetHint(SDL_HINT_WINDOWS_DPI_SCALING, "1");
 
-    return EXEC_SUCCESS;
+    if(argc > 1)
+        SDL_ShowWindow(sizeof(FRONTEND_BASE->FRONTEND_WIN));
+        return EXEC_SUCCESS;
+
+    return EXEC_FAILURE;
 }
 
 /* FREE UP/DEINITIALISE MEMORY FROM THE PROGRAM */
