@@ -12,13 +12,13 @@ using namespace FRONTEND;
 #include "frontend.hpp"
 #include "window.hpp"
 
+static WINDOW* WINDOW_BASE;
+
 /* INITIALISE THE MAIN WINDOW CORRESPONDENCE */
 /* BY EVOKING METHODS WHICH PERTAIN TOWARDS WINDOW SIZE, PROPERTIES, ETC */
 
 bool FRONTEND_BASE::INIT(int argc, char** argv)
 {
-	static WINDOW* WINDOW_BASE;
-
 	#undef USE_SDL
 	SDL_SetHint("SDL_WINDOW_DPI_SCALE", "1");
 
@@ -50,4 +50,12 @@ bool FRONTEND_BASE::INIT(int argc, char** argv)
 	}
 
 	return false;
+}
+
+/* JUST A SIMPLE DELETE METHOD FOR ALL OF THE PRE-REQUISTIES */
+
+void FRONTEND_BASE::DE_INIT(void)
+{
+	delete WINDOW_BASE;
+	SDL_Quit();
 }
