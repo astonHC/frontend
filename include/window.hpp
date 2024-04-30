@@ -23,16 +23,19 @@ namespace FRONTEND
 	class WINDOW
 	{
 		public:
+			WINDOW(const char*, int, int, int, int);
+
 			static SDL_Window* WINDOW_BASE;
 			static SDL_Renderer* RENDERER;
 			static SDL_Texture* TEXTURE_BUFFER;
 
-			WINDOW(const char*, int, int, int, int);
-
-		private:
 			static float GET_DPI_WINDOW_SCALE();
 			static void SET_FULLSCREEN(bool ENABLED) { SDL_SetWindowFullscreen(GET_WINDOW(), ENABLED ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0); }
 
 			static SDL_Window* GET_WINDOW() { return WINDOW_BASE; }
+			static SDL_Renderer* GET_RENDERER() { return RENDERER; }
+			static SDL_Texture* GET_TEXTURE_BUFFER() { return TEXTURE_BUFFER; }
+
+			static void SET_TITLEBAR_COLOUR();
 	};
 }
