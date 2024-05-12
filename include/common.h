@@ -10,6 +10,8 @@
 #ifndef COMMON
 #define COMMON
 
+using namespace std;
+
 #include <stdint.h>
 #include <stdio.h>
 
