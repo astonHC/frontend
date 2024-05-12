@@ -23,16 +23,16 @@ WINDOW::WINDOW(const char* TITLE, int WIDTH, int HEIGHT, int B_WIDTH, int B_HEIG
 
 /* CREATE AN SDL WINDOW */
 
-SDL_Window* CREATE_WINDOW(const char* TITLE, int WIDTH, int HEIGHT)
+bool WINDOW::CREATE_WINDOW(const char* TITLE, int WIDTH, int HEIGHT)
 {
-	SDL_Window* N_WINDOW = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 
+	WINDOW::WINDOW_BASE = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 
 						WIDTH, HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIDDEN 
 													| SDL_WINDOW_ALLOW_HIGHDPI);
 
-	if (N_WINDOW == nullptr)
+	if (WINDOW::WINDOW_BASE == nullptr)
 	{
 		throw new std::runtime_error("SDL_CreateWindow: couldn't be initialised %x");
 	}
 
-	return N_WINDOW;
+	return WINDOW::WINDOW_BASE;
 }
