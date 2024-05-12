@@ -11,6 +11,7 @@
 
 /* SYSTEM INCLUDES */
 
+#include <cstring>
 #include <stdexcept>
 
 #ifndef USE_SDL
@@ -18,24 +19,22 @@
 #include <SDL.h>
 #endif
 
-namespace FRONTEND
+
+class WINDOW
 {
-	class WINDOW
-	{
-		public:
-			WINDOW(const char*, int, int, int, int);
+public:
+	WINDOW(const char* TITLE, int WIDTH, int HEIGHT, int B_WIDTH, int B_HEIGHT);
 
-			static SDL_Window* WINDOW_BASE;
-			static SDL_Renderer* RENDERER;
-			static SDL_Texture* TEXTURE_BUFFER;
+	static bool CREATE_WINDOW(const char* TITLE, int WIDTH, int HEIGHT);
 
-			static float GET_DPI_WINDOW_SCALE();
-			static void SET_FULLSCREEN(bool ENABLED) { SDL_SetWindowFullscreen(GET_WINDOW(), ENABLED ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0); }
+	static SDL_Window* WINDOW_BASE;
+	static SDL_Renderer* RENDERER;
+	static SDL_Texture* TEXTURE_BUFFER;
 
-			static SDL_Window* GET_WINDOW() { return WINDOW_BASE; }
-			static SDL_Renderer* GET_RENDERER() { return RENDERER; }
-			static SDL_Texture* GET_TEXTURE_BUFFER() { return TEXTURE_BUFFER; }
+	static float GET_DPI_WINDOW_SCALE();
+	static void SET_FULLSCREEN(bool ENABLED) { SDL_SetWindowFullscreen(GET_WINDOW(), ENABLED ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0); }
 
-			static void SET_TITLEBAR_COLOUR();
-	};
-}
+	static SDL_Window* GET_WINDOW() { return WINDOW_BASE; }
+	static SDL_Renderer* GET_RENDERER() { return RENDERER; }
+	static SDL_Texture* GET_TEXTURE_BUFFER() { return TEXTURE_BUFFER; }
+};
