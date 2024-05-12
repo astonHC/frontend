@@ -37,12 +37,9 @@ namespace FRONTEND
 	{
 	public:
 		static bool INIT(int argc, char** argv);
-		static void HANDLE_SDL_EVT(SDL_Event* SDL_EV);
 
 		static void UPDATE(void);
 		static void DE_INIT(void);
-
-		static bool QUIT_APP(void);
 	};
 }
 
