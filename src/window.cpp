@@ -23,7 +23,7 @@ WINDOW::WINDOW(const char* TITLE, int WIDTH, int HEIGHT, int B_WIDTH, int B_HEIG
 
 /* CREATE AN SDL WINDOW */
 
-bool WINDOW::CREATE_WINDOW(const char* TITLE, int WIDTH, int HEIGHT)
+SDL_Window* WINDOW::CREATE_WINDOW(const char* TITLE, int WIDTH, int HEIGHT)
 {
 	WINDOW::WINDOW_BASE = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 
 						WIDTH, HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIDDEN 
@@ -35,4 +35,20 @@ bool WINDOW::CREATE_WINDOW(const char* TITLE, int WIDTH, int HEIGHT)
 	}
 
 	return WINDOW::WINDOW_BASE;
+}
+
+
+SDL_Renderer* WINDOW::CREATE_RENDERER(SDL_Window* WINDOW)
+{
+	SDL_SetHint(SDL_HINT_RENDER_BATCHING, "1");
+
+	SDL_Renderer* RENDERER = SDL_CreateRenderer(WINDOW, -1, SDL_RENDERER_TARGETTEXTURE);
+
+	if (RENDERER == nullptr)
+	{
+		throw new std::runtime_error("SDL_CreateRenderer: failed with the following message");
+	}
+
+	return RENDERER;
+
 }
